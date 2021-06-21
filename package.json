@@ -1,0 +1,30 @@
+{
+  "name": "users_management_service",
+  "version": "1.0.0",
+  "description": "lytx assignment",
+  "main": "app.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "knex": "^0.95.6",
+    "nyc": "^15.1.0",
+    "pg": "^8.6.0",
+    "pg-hstore": "^2.3.4",
+    "postgresql": "^0.0.1",
+    "sequelize": "^6.6.2",
+    "supertest": "^6.1.3"
+  },
+  "devDependencies": {
+    "mocha": "^9.0.1"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "migrate": "node scripts/migrate.js",
+    "test": "nyc mocha --timeout 10000"
+  },
+  "author": "Nal",
+  "license": "ISC"
+}

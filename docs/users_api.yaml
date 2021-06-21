@@ -1,0 +1,128 @@
+openapi: 3.0.0
+info:
+  title: Users Management
+  description: |
+    This documents porpuse if to define how to use the APIs of the service.
+  version: 1.0.0
+servers:
+  - url: http://api.example.com/v1
+    description: Optional server description, e.g. Main (production) server
+  - url: http://staging-api.example.com
+    description: Optional server description, e.g. Internal staging server for testing
+paths:
+  /users:
+    get:
+      summary: Returns a list of all users.
+      description: |
+        This API is used to get all registered users in the system.
+        
+        **user_id**: is used to delete a specific user with DELETE /users/{user_id} API.
+      responses:
+        '200':
+          description: A JSON array of user names
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  allOf:
+                    - $ref: '#/components/schemas/User'
+                    - type: object
+                      properties:
+                        user_id:
+                          $ref: '#/components/schemas/user_id'
+        '400':
+          description: Returned when there is an issue with getting the users list.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Couldn't get the users list"
+    post:
+      summary: Register a new user to the system.
+      description: |
+        Used to register a new user to the system.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/User'
+                - type: object
+                  required:
+                    - name
+                    - email
+                    - password
+      responses:
+        '200':
+          description: User was added successfully
+        '400':
+          description: Returned when there is an issue with registering the user.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Couldn't register the user"
+  /users/{user_id}:
+    delete:
+      summary: Delete the user with the user_id.
+      description: |
+        **user_id**: from GET /users API
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          description: The id of the user to delete.
+          schema:
+            type: integer
+            example: 17
+      responses:
+        '200':
+          description: Deleted the user successfully
+        '400':
+          description: Returned when there is an issue with deleting the user.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Couldn't delete the user"
+        '404':
+          description: Returned when the user_id is not in the system.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Couldn't find user_id 16"
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "John"
+          description: "Name of the user"
+        email:
+          type: string
+          example: "johndoe@gmail.com"
+          description: "Email of the user"
+        password:
+          type: string
+          example: "12345678"
+          description: "Users password"
+    user_id:
+      type: integer
+      example: 16
+      description: "User id in the system."
