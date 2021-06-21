@@ -8,8 +8,9 @@ This project was done as a home assignment with almost no knowledge in NodeJS be
 
 This tool serves as a backend service that provides APIs to manage users DB.
 
-It offers 3 APIs to do so:
+It offers 3 APIs to do so.
 
+## How to use
 1. **GET /users**
 <br>Used to get a list of all current users in the system.
 2. **POST /users**
@@ -17,7 +18,7 @@ It offers 3 APIs to do so:
 3. **DELETE /users/:user_id**
 <br>Used to delete a user from the system.
 
-## How to use
+## How to install
 The tool can be in two ways:
 1. Locally
 <br>In order to run the project locally follow these steps:
