@@ -14,12 +14,12 @@ It offers 3 APIs to do so.
 1. **GET /users**
 <br>Used to get a list of all current users in the system.
 2. **POST /users**
-<br>Used to add a new user in the system.
+<br>Used to add a new user to the system.
 3. **DELETE /users/:user_id**
 <br>Used to delete a user from the system.
 
 ## How to install
-The tool can be in two ways:
+The tool can be installed in two ways:
 1. Locally
 <br>In order to run the project locally follow these steps:
 ```diff
