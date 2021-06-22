@@ -2,7 +2,7 @@ FROM node:15
 
 WORKDIR /app
 
-COPY ./ ./
+COPY . .
 
 RUN npm install
 
