@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "chai": "^4.3.4",
+    "crypto": "^1.0.1",
     "express": "^4.17.1",
     "knex": "^0.95.6",
     "nyc": "^15.1.0",
